@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<!-- saved from url=(0097)file:///C:/Users/User/Downloads/%E3%81%A7%E3%82%93%E3%82%8F%E3%81%AE%E9%81%94%E4%BA%BA%20(1).html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>でんわの達人 — 福岡新水巻病院 電話応対トレーニング</title>
+<style>
+/* ── リセット & 基盤 ───────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a3a5c;--navy2:#2563a8;--white:#fff;
+  --bg:#f5f7fa;--surface:#fff;--surface2:#f8f9fb;--border:#e2e6ec;
+  --text:#1a1a2e;--text2:#555;--text3:#888;
+  --green:#375623;--ltgreen:#eaf3de;--bdgreen:#a8d08d;
+  --red:#c00000;--ltred:#fff5f5;--bdred:#f9aeae;
+  --amber:#7f6000;--ltamber:#fffbf0;--bdamber:#f5c518;
+  --blue:#185fa5;--ltblue:#e6f1fb;--bdblue:#90bce8;
+  --purple:#3c3489;--ltpurple:#eeedfe;
+  --pink:#8b0045;--ltpink:#fff0f5;
+  font-family:-apple-system,'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;
+}
+body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:12px 0 40px}
+
+/* ── フォン枠 ─────────────────────────────────────────── */
+.phone{width:100%;max-width:390px;background:var(--bg);border-radius:0;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12)}
+@media(min-width:440px){
+  .phone{border-radius:20px;margin:20px auto;border:1px solid var(--border)}
+}
+
+/* ── スクリーン ─────────────────────────────────────────── */
+.scr,.cscr{display:none;flex-direction:column;min-height:600px}
+.scr.on,.cscr.on{display:flex}
+
+/* ── ヘッダー ───────────────────────────────────────────── */
+.hdr{background:var(--navy);padding:13px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
+.hdr-title{color:var(--white);font-size:14px;font-weight:600;flex:1}
+.back{color:var(--white);font-size:24px;cursor:pointer;padding:0 4px;line-height:1;opacity:.9}
+.back:hover{opacity:1}
+
+/* ── ホーム ─────────────────────────────────────────────── */
+.home-top{background:var(--navy);padding:28px 20px 22px;text-align:center}
+.logo{width:56px;height:56px;background:var(--white);border-radius:14px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.app-name{color:var(--white);font-size:22px;font-weight:700;letter-spacing:.02em}
+.app-sub{color:rgba(255,255,255,.7);font-size:11px;margin-top:3px}
+.app-badge{display:inline-block;background:rgba(255,255,255,.15);color:var(--white);font-size:10px;padding:3px 11px;border-radius:20px;margin-top:8px;border:1px solid rgba(255,255,255,.25)}
+.body{padding:14px;flex:1;overflow-y:auto}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
+.stat-n{font-size:24px;font-weight:700;color:var(--navy)}
+.stat-l{font-size:11px;color:var(--text3);margin-top:2px}
+.sec-lbl{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.07em;margin:10px 0 7px;text-transform:uppercase}
+.mcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 14px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .15s,box-shadow .15s}
+.mcard:hover{background:#f0f4fa;box-shadow:0 2px 8px rgba(26,58,92,.08)}
+.mcard:active{background:#e8eef7}
+.mico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.mtxt h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.mtxt p{font-size:11px;color:var(--text3)}
+.bdg{display:inline-block;background:#fee2e2;color:#b91c1c;font-size:9px;padding:1px 6px;border-radius:20px;margin-left:5px;font-weight:600}
+
+/* ── タブ ───────────────────────────────────────────────── */
+.tabs{display:flex;background:var(--surface2);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:10px 13px;font-size:11px;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s}
+.tab.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.tab-c{display:none;padding:14px;flex:1;overflow-y:auto}
+.tab-c.on{display:block}
+
+/* ── マニュアル ─────────────────────────────────────────── */
+.sh{font-size:11px;font-weight:600;background:var(--ltblue);color:var(--navy);padding:6px 10px;border-radius:8px;margin:10px 0 7px}
+.sh.red{background:var(--ltred);color:var(--red)}
+.sh.amber{background:var(--ltamber);color:var(--amber)}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px}
+.pc.warn{border-color:var(--bdamber);background:var(--ltamber)}
+.pc.danger{border-color:var(--bdred);background:var(--ltred)}
+.ptag{font-size:9px;background:var(--ltblue);color:var(--blue);padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:6px;font-weight:600}
+.ptag.red{background:var(--ltred);color:var(--red)}
+.ptag.amber{background:var(--ltamber);color:var(--amber)}
+.ptag.green{background:var(--ltgreen);color:var(--green)}
+.pn{font-size:11px;color:var(--red);margin-bottom:3px}
+.pa{font-size:10px;color:var(--text3);margin-bottom:5px}
+.po{font-size:13px;color:var(--text);font-weight:500;line-height:1.55}
+.pnote{font-size:10px;color:var(--text3);margin-top:6px;padding-top:6px;border-top:1px solid var(--border);line-height:1.5}
+.pr{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)}
+.pr:last-child{border-bottom:none}
+.ps{font-size:10px;color:var(--text3);width:74px;flex-shrink:0;padding-top:1px}
+.pt{font-size:12px;color:var(--text);line-height:1.55}
+.tip{background:var(--ltamber);border:1px solid var(--bdamber);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.tip h4{font-size:11px;color:var(--amber);font-weight:600;margin-bottom:5px}
+.tip li{font-size:10px;color:var(--amber);margin-left:14px;margin-bottom:3px;line-height:1.5}
+.alert-box{background:var(--ltred);border:1px solid var(--bdred);border-radius:10px;padding:11px 12px;margin-bottom:8px}
+.alert-box h4{font-size:11px;color:var(--red);font-weight:600;margin-bottom:5px}
+.alert-box li{font-size:10px;color:var(--red);margin-left:14px;margin-bottom:3px;line-height:1.5}
+
+/* ── クイズ ─────────────────────────────────────────────── */
+.qhdr{background:var(--navy);padding:12px 16px 9px;position:sticky;top:0;z-index:10}
+.qnav{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.qprog{background:rgba(255,255,255,.25);border-radius:4px;height:4px;flex:1;overflow:hidden}
+.qpf{height:100%;background:var(--white);border-radius:4px;transition:width .35s ease}
+.qnum{font-size:10px;color:rgba(255,255,255,.8);white-space:nowrap}
+.cf-row{display:flex;gap:5px;flex-wrap:wrap;padding-bottom:2px}
+.cf{font-size:10px;padding:3px 9px;border-radius:20px;cursor:pointer;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7);transition:all .15s}
+.cf:hover{border-color:rgba(255,255,255,.6);color:var(--white)}
+.cf.on{background:var(--white);color:var(--navy);border-color:var(--white);font-weight:600}
+.qbody{padding:14px;flex:1;overflow-y:auto}
+.qq{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}
+.qlbl{font-size:10px;color:var(--text3);margin-bottom:5px}
+.qtxt{font-size:14px;color:var(--text);line-height:1.65;font-weight:500}
+.qcat{font-size:9px;padding:2px 8px;border-radius:20px;display:inline-block;margin-top:6px;font-weight:600}
+.cat-basic{background:var(--ltblue);color:var(--blue)}
+.cat-manner{background:var(--ltgreen);color:var(--green)}
+.cat-claim{background:var(--ltred);color:var(--red)}
+.cat-phrase{background:var(--ltamber);color:var(--amber)}
+.cat-keigo{background:var(--ltpurple);color:var(--purple)}
+.cat-privacy{background:var(--ltpink);color:var(--pink)}
+.opt{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 13px;margin-bottom:7px;cursor:pointer;font-size:12px;color:var(--text);line-height:1.5;transition:all .15s}
+.opt:hover{background:#f0f4fa;border-color:#b0bcd0}
+.opt.cor{background:var(--ltgreen);border-color:var(--bdgreen);color:var(--green);font-weight:600}
+.opt.wrg{background:var(--ltred);border-color:var(--bdred);color:var(--red)}
+.opt.dim2{opacity:.35}
+.fb{border-radius:10px;padding:11px;font-size:12px;line-height:1.6;margin-top:3px;display:none}
+.fb.on{display:block}
+.fb.ok2{background:var(--ltgreen);color:var(--green);border:1px solid var(--bdgreen)}
+.fb.ng2{background:var(--ltred);color:var(--red);border:1px solid var(--bdred)}
+.nbtn{width:100%;background:var(--navy);color:var(--white);border:none;border-radius:10px;padding:12px;font-size:13px;font-weight:600;cursor:pointer;margin-top:10px;display:none;transition:background .15s}
+.nbtn:hover{background:var(--navy2)}
+.nbtn.on{display:block}
+
+/* ── シナリオ ───────────────────────────────────────────── */
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:9px;cursor:pointer;overflow:hidden;transition:box-shadow .15s}
+.scard:hover{box-shadow:0 3px 12px rgba(26,58,92,.1)}
+.scard:active{background:#f8f9fb}
+.shead{padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+.stitle{font-size:13px;font-weight:600;color:var(--text)}
+.sdiff{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600}
+.de{background:var(--ltgreen);color:var(--green)}
+.dm{background:var(--ltamber);color:var(--amber)}
+.dh{background:var(--ltred);color:var(--red)}
+.ssub{font-size:11px;color:var(--text3);padding:0 14px 12px;line-height:1.45}
+
+/* ── チャット ───────────────────────────────────────────── */
+.cbody{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:380px}
+.cmsg{max-width:82%;padding:10px 13px;border-radius:12px;font-size:12px;line-height:1.6}
+.caller{background:var(--surface2);border:1px solid var(--border);border-radius:3px 12px 12px 12px;align-self:flex-start;color:var(--text)}
+.mine{background:var(--navy);color:var(--white);border-radius:12px 3px 12px 12px;align-self:flex-end}
+.clbl{font-size:9px;color:var(--text3);margin-bottom:3px}
+.cchoices{padding:12px 14px;border-top:1px solid var(--border);background:var(--surface2)}
+.ch-hint{font-size:10px;color:var(--text3);margin-bottom:7px}
+.cchoice{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:7px;cursor:pointer;font-size:12px;color:var(--text);line-height:1.5;transition:all .15s}
+.cchoice:hover{background:#f0f4fa;border-color:#b0bcd0}
+.cchoice:last-child{margin-bottom:0}
+.fbmsg{font-size:11px;padding:8px 11px;border-radius:9px;margin:2px 0;line-height:1.5;border:1px solid transparent}
+.endbanner{background:var(--ltgreen);border:1px solid var(--bdgreen);border-radius:12px;padding:16px;text-align:center;margin:8px 0}
+.endbanner h3{color:var(--green);font-size:16px;font-weight:700;margin-bottom:4px}
+.endbanner p{color:var(--green);font-size:11px;margin-bottom:12px}
+.endbanner button{background:var(--green);color:var(--white);border:none;border-radius:8px;padding:8px 20px;font-size:12px;cursor:pointer;font-weight:600}
+
+/* ── 結果画面 ───────────────────────────────────────────── */
+.result-wrap{text-align:center;padding:30px 16px}
+.result-emoji{font-size:60px;margin-bottom:12px}
+.result-score{font-size:28px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.result-pct{font-size:13px;color:var(--text3);margin-bottom:6px}
+.result-msg{font-size:13px;color:var(--text2);margin-bottom:24px;line-height:1.5}
+.result-btns{display:flex;gap:8px;justify-content:center}
+.btn-primary{background:var(--navy);color:var(--white);border:none;border-radius:10px;padding:12px 26px;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-primary:hover{background:var(--navy2)}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:12px 26px;font-size:13px;cursor:pointer;transition:background .15s}
+.btn-secondary:hover{background:#f0f4fa}
+
+/* ── ユーティリティ ─────────────────────────────────────── */
+.dim{opacity:.4;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="phone">
+
+<!-- ======= HOME ======= -->
+<div class="scr on" id="home">
+  <div class="home-top">
+    <div class="logo">📞</div>
+    <div class="app-name">でんわの達人</div>
+    <div class="app-sub">病院電話応対トレーニング v4</div>
+    <div class="app-badge">福岡新水巻病院 院内資料準拠版</div>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat"><div class="stat-n" id="hs">0</div><div class="stat-l">累計正解数</div></div>
+      <div class="stat"><div class="stat-n" id="hp">0</div><div class="stat-l">挑戦回数</div></div>
+    </div>
+    <div class="sec-lbl">学習メニュー</div>
+    <div class="mcard" onclick="go(&#39;manual&#39;)">
+      <div class="mico" style="background:#e6f1fb">📖</div>
+      <div class="mtxt"><h3>マニュアル・フレーズ集</h3><p>入院患者問合せ・個人情報対応含む全4タブ</p></div>
+    </div>
+    <div class="mcard" onclick="startQuiz()">
+      <div class="mico" style="background:#eaf3de">✅</div>
+      <div class="mtxt"><h3>クイズモード <span class="bdg">全30問</span></h3><p>カテゴリ別ランダム出題・個人情報対応含む</p></div>
+    </div>
+    <div class="mcard" onclick="go(&#39;scenario&#39;)">
+      <div class="mico" style="background:#faeeda">🎭</div>
+      <div class="mtxt"><h3>シナリオ練習</h3><p>4本・入院患者問合せシナリオ収録</p></div>
+    </div>
+    <div class="sec-lbl" style="margin-top:16px">今後追加予定</div>
+    <div class="mcard dim">
+      <div class="mico" style="background:#f0f0f0">📋</div>
+      <div class="mtxt"><h3>レセプト対応（準備中）</h3><p>次フェーズ開発予定</p></div>
+    </div>
+    <div class="mcard dim">
+      <div class="mico" style="background:#f0f0f0">🚨</div>
+      <div class="mtxt"><h3>災害時対応（準備中）</h3><p>次フェーズ開発予定</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MANUAL ======= -->
+<div class="scr" id="manual">
+  <div class="hdr"><div class="back" onclick="go(&#39;home&#39;)">‹</div><div class="hdr-title">マニュアル・フレーズ集</div></div>
+  <div class="tabs">
+    <div class="tab on" onclick="stab(0)">基本ルール</div>
+    <div class="tab" onclick="stab(1)">場面別対応</div>
+    <div class="tab" onclick="stab(2)">入院/個人情報</div>
+    <div class="tab" onclick="stab(3)">敬語NG集</div>
+  </div>
+
+  <!-- TAB0 基本ルール -->
+  <div class="tab-c on" id="t0">
+    <div class="sh">📞 電話の受け方（院内ルール）</div>
+    <div class="pc">
+      <div class="ptag">外線の第一声</div>
+      <div class="pn">✗「はい、M病院です。」／「お電話ありがとうございます」で始める</div>
+      <div class="pa">↓</div>
+      <div class="po">✓「福岡新水巻病院、医事課（受付）、○○でございます。」</div>
+      <div class="pnote">📌 病院名→部署名→自分の名前の順。「もしもし」は不要。時間帯に応じて「おはようございます」等を加えてもよい。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">内線の第一声</div>
+      <div class="pn">✗「はい。」だけ</div>
+      <div class="pa">↓</div>
+      <div class="po">✓「はい、医事課（受付）、○○です。」</div>
+      <div class="pnote">📌 内線でも必ず部署名と自分の名前を名乗る。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">3コール以上の場合</div>
+      <div class="po">✓「お待たせいたしました。福岡新水巻病院でございます。」</div>
+      <div class="pnote">📌 ベルは2回以内が基本。3回以上は必ず「お待たせいたしました」を先に添える。</div>
+    </div>
+    <div class="tip">
+      <h4>📋 心構え6ヶ条（院内マニュアル）</h4>
+      <li>電話は病院の窓口。応対が病院のイメージを左右する</li>
+      <li>忙しい時・感情が高ぶる時も平常心を保つ</li>
+      <li>姿勢・態度は声のトーンに表れる（足を組まない・頬杖をつかない）</li>
+      <li>ゆっくり・明るく・明瞭に話す（高齢患者も多い）</li>
+      <li>電話内容はメモを取りながら話す（5W1H）</li>
+      <li>職員の個人情報は本人承諾なく絶対に教えない</li>
+    </div>
+    <div class="sh">取り次ぎ・不在・保留</div>
+    <div class="pc">
+      <div class="ptag">取り次ぐとき</div>
+      <div class="po">✓「○○でございますね。かしこまりました。少々お待ちくださいませ。」</div>
+      <div class="pnote">📌 内容確認→了承→保留の順。取り次ぎ後は「○○の□□様からお電話です」と担当者に伝える。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">担当者不在のとき</div>
+      <div class="po">✓「申し訳ございません。あいにく○○は外出いたしております。○時には戻る予定でございますが、いかがいたしましょうか。」</div>
+      <div class="pnote">📌 詳しい場所は言わなくてよい。戻り時間・折り返し・伝言の3択を提示する。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">他の電話中のとき</div>
+      <div class="po">✓「あいにく○○はほかの電話に出ております。折り返しこちらからお電話を差し上げましょうか。」</div>
+      <div class="pnote">📌 かけ直すか待っていただくか、相手の都合を確認する。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">長時間保留になるとき</div>
+      <div class="po">✓「確認にお時間をいただきますので、本日○時ごろに折り返しご連絡させていただきます。」</div>
+      <div class="pnote">📌 保留のまま放置は厳禁。折り返し時間の目安を必ず伝える。</div>
+    </div>
+    <div class="tip">
+      <h4>📝 メモは5W1Hで（必須）</h4>
+      <li>Who（だれが）— 相手の名前・所属</li>
+      <li>When（いつ）— 時刻・希望日時</li>
+      <li>Where（どこで）— 担当部署・病棟</li>
+      <li>What（なにを）— 用件の内容</li>
+      <li>Why（なぜ）— 理由・背景</li>
+      <li>How（どのように）— 折り返し先・対応方法</li>
+      <li>※メモ後は必ず復唱確認。本人が戻ったら口頭でも確認。</li>
+    </div>
+  </div>
+
+  <!-- TAB1 場面別 -->
+  <div class="tab-c" id="t1">
+    <div class="sh">📅 予約・問い合わせ対応</div>
+    <div id="phrases-list"></div>
+    <div class="sh">🏥 医療機関・薬局からの問い合わせ</div>
+    <div class="pc">
+      <div class="ptag">他院・薬局への応対</div>
+      <div class="po">✓「お世話になっております。○○に確認いたしますので、少々お待ちください。」</div>
+      <div class="pnote">📌 相手の所属・名前を確認してから担当者へ。診察中の場合は折り返しを提案。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">検査・診察結果の問い合わせ</div>
+      <div class="pn">✗ 電話で結果を教える</div>
+      <div class="pa">↓</div>
+      <div class="po">✓「申し訳ございませんが、検査結果はお電話ではお伝えできません。お手数ですがご来院いただけますでしょうか。」</div>
+      <div class="pnote">📌 診察結果・検査結果は電話では原則お伝えしない。必ず来院を促す。</div>
+    </div>
+    <div class="pc">
+      <div class="ptag">症状悪化・緊急相談</div>
+      <div class="po">✓「症状をお聞かせいただけますか。確認したうえで担当者にお繋ぎいたします。」</div>
+      <div class="pnote">📌 急ぎの場合は医師・看護師への取り次ぎ判断を上司に仰ぐ。自己判断で回答しない。</div>
+    </div>
+    <div class="sh">💼 メーカー・業者からのセールス</div>
+    <div class="pc">
+      <div class="ptag">セールス対応</div>
+      <div class="po">✓「お世話になっております。担当者に確認いたします。お差し支えなければ会社名・ご担当者名・ご用件をお聞かせいただけますでしょうか。」</div>
+      <div class="pnote">📌 今後の関係を考慮し丁寧に。院内ルールに沿って対応する。</div>
+    </div>
+    <div class="sh">😠 クレーム対応（4ステップ）</div>
+    <div class="pc">
+      <div class="ptag green">クレーム対応の基本フロー</div>
+      <div class="po">① 謝罪・共感 → ② 傾聴（最後まで話を聞く）→ ③ 事実確認 → ④ 解決策提示</div>
+      <div class="po" style="margin-top:8px">✓「ご不快な気持ちにさせてしまい誠に申し訳ございません。差し支えなければ、その際の状況をお聞かせいただけますでしょうか。」</div>
+      <div class="pnote">📌 言い訳・否定・訂正は逆効果。落ち着いたトーンで、感情を出さない。</div>
+    </div>
+  </div>
+
+  <!-- TAB2 入院/個人情報 -->
+  <div class="tab-c" id="t2">
+    <div class="alert-box">
+      <h4>🚨 当院の最重要ルール</h4>
+      <li>電話での入院患者に関する問い合わせには一切お答えしない</li>
+      <li>在院確認・病室番号・病状・治療内容はすべて電話不可</li>
+      <li>本人確認ができないため、ご家族を名乗る方でも同様</li>
+      <li>個人情報保護法に基づく対応を院内全体で徹底する</li>
+    </div>
+    <div class="sh red">🔒 入院患者問い合わせ（電話回答不可）</div>
+    <div class="pc danger">
+      <div class="ptag red">在院確認の問い合わせ</div>
+      <div class="pn">✗「はい、入院されています。」</div>
+      <div class="pa">↓</div>
+      <div class="po">✓「大変恐れ入りますが、患者様のご入院等に関するご案内は、個人情報保護の観点から電話でのご対応ができかねます。ご用がある場合は直接ご来院いただくか、患者様本人にご連絡いただきますようお願いいたします。」</div>
+      <div class="pnote">📌 在院の確認をすること自体が個人情報の開示にあたる。入院の有無自体を答えない。</div>
+    </div>
+    <div class="pc danger">
+      <div class="ptag red">「家族です」と言われた場合</div>
+      <div class="pn">✗「家族の方なら教えます」</div>
+      <div class="pa">↓</div>
+      <div class="po">✓「大変恐れ入りますが、お電話ではご本人様の確認ができかねるため、ご家族様であっても患者様に関する情報はお伝えできません。誠に恐れ入りますが、ご来院いただけますでしょうか。」</div>
+      <div class="pnote">📌 電話では本人確認が不可能。家族を名乗る第三者・なりすましへの対応として統一する。</div>
+    </div>
+    <div class="pc danger">
+      <div class="ptag red">病状・病名の問い合わせ</div>
+      <div class="pn">✗「○○病で入院中です。」</div>
+      <div class="pa">↓</div>
+      <div class="po">✓「誠に申し訳ございませんが、病状に関することは電話ではお答えできません。担当医師にご確認いただきたい場合は、ご来院いただけますようお願いいたします。」</div>
+      <div class="pnote">📌 病名・治療内容・検査結果はいかなる場合も電話では教えない。</div>
+    </div>
+    <div class="pc danger">
+      <div class="ptag red">病室・連絡先を聞かれた場合</div>
+      <div class="po">✓「大変恐れ入りますが、病室・連絡先等のご案内は電話ではいたしかねます。」</div>
+      <div class="pnote">📌 患者様が「連絡してよい」と事前に申し出ている場合のみ、院内フローに従い対応。</div>
+    </div>
+    <div class="sh amber">⚠️ その他の個人情報対応</div>
+    <div class="pc warn">
+      <div class="ptag amber">職員の個人情報</div>
+      <div class="po">✓「大変申し訳ございませんが、職員の個人的な情報（自宅・連絡先等）はお答えできかねます。」</div>
+      <div class="pnote">📌 職員の自宅住所・電話番号・出張先等は本人承諾なく絶対に教えない。</div>
+    </div>
+    <div class="pc warn">
+      <div class="ptag amber">見知らぬ人からの職員への問い合わせ</div>
+      <div class="po">✓「ご連絡先をお聞かせいただければ、本人から折り返しご連絡させます。」</div>
+      <div class="pnote">📌 よく知らない相手からの問い合わせは特に慎重に。不審な場合は上司に相談。</div>
+    </div>
+    <div class="pc warn">
+      <div class="ptag amber">診察結果・検査結果の問い合わせ</div>
+      <div class="po">✓「申し訳ございませんが、検査結果はお電話ではお伝えできません。ご来院いただけますでしょうか。」</div>
+      <div class="pnote">📌 本人からの電話であっても電話での結果告知は原則行わない。</div>
+    </div>
+  </div>
+
+  <!-- TAB3 敬語NG集 -->
+  <div class="tab-c" id="t3">
+    <div class="sh">❌ よくある間違い敬語</div>
+    <div id="keigo-list"></div>
+  </div>
+</div>
+
+<!-- ======= QUIZ ======= -->
+<div class="scr" id="quiz">
+  <div class="qhdr">
+    <div class="qnav">
+      <div class="back" onclick="go(&#39;home&#39;)" style="font-size:24px;color:#fff;cursor:pointer;padding:0 4px">‹</div>
+      <div class="qprog"><div class="qpf" id="qpf"></div></div>
+      <div class="qnum" id="qnum">1/10</div>
+    </div>
+    <div class="cf-row" id="cff"><div class="cf on" onclick="setFilter(&#39;all&#39;)">すべて</div><div class="cf" onclick="setFilter(&#39;basic&#39;)">基本</div><div class="cf" onclick="setFilter(&#39;phrase&#39;)">フレーズ</div><div class="cf" onclick="setFilter(&#39;privacy&#39;)">個人情報</div><div class="cf" onclick="setFilter(&#39;manner&#39;)">マナー</div><div class="cf" onclick="setFilter(&#39;claim&#39;)">クレーム</div><div class="cf" onclick="setFilter(&#39;keigo&#39;)">敬語</div></div>
+  </div>
+  <div class="qbody" id="qbody"></div>
+</div>
+
+<!-- ======= SCENARIO LIST ======= -->
+<div class="scr" id="scenario">
+  <div class="hdr"><div class="back" onclick="go(&#39;home&#39;)">‹</div><div class="hdr-title">シナリオ練習</div></div>
+  <div class="body">
+    <p style="font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.6">実際の電話応対をシミュレーション。正しい返答を選んでください。</p>
+    <div class="scard" onclick="startScene(0)">
+      <div class="shead"><div class="stitle">外来患者からの問い合わせ</div><div class="sdiff de">初級</div></div>
+      <div class="ssub">名乗り・取り次ぎ・折り返し対応の基本</div>
+    </div>
+    <div class="scard" onclick="startScene(1)">
+      <div class="shead"><div class="stitle">入院患者の在院確認・病状問い合わせ</div><div class="sdiff dh">重要</div></div>
+      <div class="ssub">院内ルール：電話での入院情報は一切回答不可</div>
+    </div>
+    <div class="scard" onclick="startScene(2)">
+      <div class="shead"><div class="stitle">待ち時間クレーム対応</div><div class="sdiff dh">上級</div></div>
+      <div class="ssub">謝罪→共感→確認→収束の4ステップ</div>
+    </div>
+    <div class="scard" onclick="startScene(3)">
+      <div class="shead"><div class="stitle">他院からの診療情報照会</div><div class="sdiff dm">中級</div></div>
+      <div class="ssub">個人情報照会の手順・相手確認・担当医転送</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= CHAT ======= -->
+<div class="cscr" id="chat">
+  <div class="hdr"><div class="back" id="cback">‹</div><div class="hdr-title" id="ctitle">シナリオ</div></div>
+  <div class="cbody" id="cbody"></div>
+  <div class="cchoices" id="cchoices"></div>
+</div>
+
+</div><!-- /phone -->
+
+<script>
+// ── データ定義 ─────────────────────────────────────────────
+const phrases=[
+  {s:'予約受付',t:'お名前とご希望の日時をお聞かせいただけますでしょうか。本日○時からご予約可能ですが、ご都合はいかがでしょうか。'},
+  {s:'予約確認',t:'お名前とご予約の日時をお知らせください。○月○日○時のご予約でよろしいでしょうか。'},
+  {s:'予約変更',t:'○月○日の○時への変更が可能ですが、ご都合はいかがでしょうか。'},
+  {s:'初診案内',t:'初診の方は問診票のご記入がありますので、15分ほど前にお越しいただけますと助かります。'},
+  {s:'締めの言葉',t:'○月○日○時にお待ちしております。どうぞお気をつけてお越しください。'},
+  {s:'名前確認',t:'恐れ入りますが、お名前をうかがってもよろしいでしょうか。フルネームでお願いできますか。'},
+  {s:'用件確認',t:'恐れ入りますが、どのようなご用件でいらっしゃいますか。'},
+  {s:'聞き返し',t:'恐れ入りますが、もう一度おっしゃっていただけないでしょうか。'},
+  {s:'保留',t:'少々お待ちくださいませ。'},
+  {s:'お待たせ後',t:'大変お待たせいたしました。'},
+  {s:'不在告知',t:'申し訳ございません。あいにく○○は外出いたしております。'},
+  {s:'折り返し',t:'本日○時ごろにご連絡差し上げてよろしいでしょうか。'},
+  {s:'伝言受領',t:'確かに承りました。○○にお伝えいたします。'},
+  {s:'了承',t:'かしこまりました。／承知いたしました。'},
+  {s:'謝罪',t:'誠に申し訳ございませんでした。大変ご不便をおかけいたしました。'},
+  {s:'電話締め',t:'お電話ありがとうございました。どうぞお大事になさってください。'},
+  {s:'電話が遠い',t:'恐れ入ります。お電話が少々遠いようでございますが。'},
+  {s:'担当へ代わる',t:'ただいま係りの者とかわりますので、少々お待ちくださいませ。'},
+  {s:'気遣い',t:'お気をつけてお越しください。／お大事になさってください。'},
+  {s:'確認中',t:'担当者に確認してまいりますので、少々お待ちいただけますでしょうか。'},
+];
+
+const keigoNG=[
+  {n:'了解しました',o:'承知しました / かしこまりました',note:'「了解」は対等〜目下への言葉。患者様・上司には必ずNG。'},
+  {n:'すいません',o:'申し訳ございません',note:'「すいません」は話し言葉。ビジネスでは「申し訳ございません」。'},
+  {n:'なるほどですね',o:'おっしゃる通りです / 左様でございますか',note:'「なるほど」は目下への相槌。患者様にはNG。'},
+  {n:'参考になりました',o:'大変勉強になりました',note:'「参考」は"足しにする"の意。目上の方には「勉強になりました」。'},
+  {n:'よろしかったでしょうか',o:'よろしいでしょうか',note:'「よろしかった」は過去形。現在のことに使うのは誤り。'},
+  {n:'〜〜になります',o:'〜〜でございます',note:'「なります」は変化を表す。断定には「でございます」。'},
+  {n:'お名前を頂戴できますか',o:'お名前をうかがってもよろしいでしょうか',note:'名前は「頂戴」するものではなく「伺う」もの。'},
+  {n:'ご覧になられますか（二重敬語）',o:'ご覧になりますか',note:'「ご覧になる」だけで尊敬語。「られる」を重ねると二重敬語。'},
+  {n:'出られています（社内スタッフへの尊敬語）',o:'出ています',note:'社内の人を外部に紹介するとき敬語は使わない。'},
+  {n:'どなたとお話しされたか分かりますか',o:'どの者とお話しされたかお分かりになりますか',note:'自院スタッフを「どなた」と呼ぶのはNG。「どの者」と言う。'},
+  {n:'Aさんはお休みを頂いております',o:'Aは休みを取っております',note:'社内の人を外部に紹介するとき敬語は不要。「お休みを頂いて」もNG。'},
+  {n:'させていただく（乱用）',o:'いたします / します',note:'許可を得て恩恵を受ける場合のみ使う。乱用は「させていただく症候群」。'},
+  {n:'〇〇の話は伺われましたか（外部の方へ）',o:'〇〇の話はお聞きになりましたか',note:'「伺う」は謙譲語。外部の方の行為に使うのは誤り。'},
+  {n:'お待ちになられてください',o:'お待ちください',note:'「お待ちになる」+「られる」の二重敬語。シンプルに。'},
+];
+
+const ALL_Q=[
+  {q:'当院の外線電話の正しい第一声は？',opts:['「お電話ありがとうございます。M病院でございます。」','「はい、M病院です。」','「福岡新水巻病院、医事課（受付）、○○でございます。」','「もしもし、福岡新水巻病院です。」'],a:2,exp:'院内ルール：病院名→部署名→自分の名前の順。「もしもし」「お電話ありがとうございます」で始めるのは当院ルールと異なります。',cat:'basic'},
+  {q:'電話のベルは何回以内にとるのが基本？',opts:['1回以内','2回以内','3回以内','5回以内'],a:1,exp:'ベルは2回以内が基本。3回以上鳴らした場合は「お待たせいたしました」を必ず添える。',cat:'basic'},
+  {q:'3コール以上鳴らした場合の正しい対応は？',opts:['そのまま話し始める','「遅くなりました。」','「お待たせいたしました。福岡新水巻病院でございます。」','「はい、どうぞ。」'],a:2,exp:'「お待たせいたしました」を先に述べてから名乗ります。',cat:'basic'},
+  {q:'内線電話に出るときの正しい応対は？',opts:['「もしもし。」','「はい。」だけ','「はい、医事課（受付）、○○です。」','「何でしょうか。」'],a:2,exp:'内線でも必ず部署名と自分の名前を名乗ります。',cat:'basic'},
+  {q:'取り次ぎ前に言うべき言葉は？',opts:['「ちょっと待って。」','「○○でございますね。かしこまりました。少々お待ちくださいませ。」','「保留にします。」','「確認します。」'],a:1,exp:'内容確認→了承→保留の流れが基本。「かしこまりました」で丁寧に。',cat:'basic'},
+  {q:'担当者不在時の正しい対応は？',opts:['「いません。」','「外出中です。」','「申し訳ございません。あいにく○○は外出いたしております。○時には戻る予定ですが、いかがいたしましょうか。」','「知りません。」'],a:2,exp:'謝罪→不在告知→戻り時間・折り返し・伝言の3択提示が基本の流れ。',cat:'basic'},
+  {q:'予約をとる際に最初に確認するのは？',opts:['診察券番号','お名前とご希望日時','保険証の種類','紹介状の有無'],a:1,exp:'予約受付ではまずお名前と希望日時を確認します。',cat:'basic'},
+  {q:'名前をたずねる正しいフレーズは？',opts:['「名前は何ですか？」','「お名前は？」','「恐れ入りますが、お名前をうかがってもよろしいでしょうか。」','「誰ですか？」'],a:2,exp:'「恐れ入りますが」というクッション言葉を先に使います。',cat:'phrase'},
+  {q:'聞き返すときの正しいフレーズは？',opts:['「え？もう一回。」','「聞こえません。」','「恐れ入りますが、もう一度おっしゃっていただけないでしょうか。」','「大きな声で。」'],a:2,exp:'クッション言葉→聞き返しの順が基本。',cat:'phrase'},
+  {q:'了承するときの正しい言葉は？',opts:['「了解しました。」','「わかりました。」','「かしこまりました。または承知いたしました。」','「オッケーです。」'],a:2,exp:'「かしこまりました」「承知いたしました」が正解。「了解」はNG。',cat:'phrase'},
+  {q:'伝言を受けた後の正しいフレーズは？',opts:['「伝えておきます。」','「確かに承りました。○○にお伝えいたします。」','「わかりました。」','「メモしました。」'],a:1,exp:'「確かに承りました」で受領を示し、誰に伝えるかも明言します。',cat:'phrase'},
+  {q:'電話を締める際の正しいフレーズは？',opts:['「じゃあ、失礼します。」','「バイバイ。」','「お電話ありがとうございました。どうぞお大事になさってください。」','「またかけてください。」'],a:2,exp:'感謝の言葉＋気遣いの言葉を添えて締める。相手が切るのを待つ。',cat:'phrase'},
+  {q:'折り返しを伝える正しいフレーズは？',opts:['「後でかけ直します。」','「本日○時ごろにご連絡差し上げてよろしいでしょうか。」','「暇なときにかけます。」','「かけ直してください。」'],a:1,exp:'折り返し時間の目安を伝えると患者様が安心できます。',cat:'phrase'},
+  {q:'電話で入院患者の在院確認を求められた。正しい対応は？',opts:['「はい、入院されています。」','「確認してみます。」','「大変恐れ入りますが、患者様のご入院等に関するご案内は個人情報保護の観点から電話ではできかねます。ご来院いただくかご本人へご連絡ください。」','「名前と病室番号は教えられます。」'],a:2,exp:'当院ルール：入院の有無・病室・病状はすべて電話で答えない。在院確認も個人情報の開示にあたる。',cat:'privacy'},
+  {q:'「家族ですが入院しているか教えてください」と言われた。正しい対応は？',opts:['「ご家族の方なら教えます。」','「お名前を教えれば確認します。」','「大変恐れ入りますが、お電話ではご本人様の確認ができかねるため、ご家族様であっても患者様に関する情報はお伝えできません。ご来院いただけますでしょうか。」','少々お待ちください」と病棟に確認する'],a:2,exp:'家族を名乗る方でも電話での本人確認は不可能。なりすましのリスクもある。来院を促す対応に統一。',cat:'privacy'},
+  {q:'電話で病状・病名を聞かれた。正しい対応は？',opts:['担当医に確認してから教える','「〇〇で入院中です。」','「誠に申し訳ございませんが、病状に関することは電話ではお答えできません。ご来院いただきますようお願いいたします。」','「看護師に確認してお電話します。」'],a:2,exp:'病名・治療内容・検査結果はいかなる場合も電話では教えない。',cat:'privacy'},
+  {q:'「病室の電話番号を教えて」と言われた場合は？',opts:['教える','調べて折り返す','「大変恐れ入りますが、病室・連絡先等のご案内は電話ではいたしかねます。」','「病棟に転送します。」'],a:2,exp:'病室番号・連絡先は原則電話では教えない。患者様が事前に了承している場合のみ院内フローに従う。',cat:'privacy'},
+  {q:'職員の自宅電話番号を聞かれた場合は？',opts:['教える','「調べてみます。」','「大変申し訳ございませんが、職員の個人的な情報はお答えできかねます。」','本人に確認してから教える'],a:2,exp:'院内マニュアル：職員の自宅住所・電話番号・出張先は本人承諾なく絶対に教えない。',cat:'privacy'},
+  {q:'検査結果を電話で聞かれた。正しい対応は？',opts:['担当医に確認後、伝える','「申し訳ございませんが、検査結果はお電話ではお伝えできません。ご来院いただけますでしょうか。」','看護師に転送する','結果を読み上げる'],a:1,exp:'診察結果・検査結果は電話では原則伝えない。必ず来院を促す。',cat:'privacy'},
+  {q:'保留は何秒以内が目安？',opts:['10秒','30秒','1分','制限なし'],a:1,exp:'30秒以内が目安。それ以上かかる場合は折り返しを提案。保留のまま放置は厳禁。',cat:'manner'},
+  {q:'電話でゆっくり話すべき理由は？',opts:['時間を稼ぐため','高齢の患者様も多く、急いで話すと不安・緊張を与えるため','声を大きく見せるため','相手を眠らせるため'],a:1,exp:'院内マニュアル：通常より少し遅めのスピードで、明瞭に話すことが重要。',cat:'manner'},
+  {q:'電話を切るのは原則誰からが基本？',opts:['受けた方から切る','かけた方から切る','どちらでもよい','同時に切る'],a:1,exp:'原則はかけた方が先に切る。患者様・目上の方の場合は相手が切るのを待つ。',cat:'manner'},
+  {q:'電話対応のメモで5W1Hに含まれないのはどれ？',opts:['Who（だれが）','When（いつ）','Why（なぜ）','Which（どっちが）'],a:3,exp:'5W1H：Who・When・Where・What・Why・How。メモはこの6点を押さえる。',cat:'manner'},
+  {q:'クレーム対応の正しい順番は？',opts:['理由説明→謝罪→解決策','謝罪→共感→事実確認→解決策提示','確認→謝罪→解決策','解決策→謝罪→確認'],a:1,exp:'謝罪→共感→確認（事実把握）→解決策提示の順が基本。',cat:'claim'},
+  {q:'怒っている患者様に「それはあなたの誤解です」と言うのは？',opts:['正しい対応','やむを得ない場合もある','絶対NGで、まず傾聴・共感が先','早急な解決のため有効'],a:2,exp:'怒りの最中の否定・訂正は逆効果。まず最後まで話を聞き、謝罪・共感が基本。',cat:'claim'},
+  {q:'「〜〜になります」の正しい言い換えは？',opts:['「〜〜でございます」','「〜〜です」','「〜〜となります」','「〜〜になっています」'],a:0,exp:'「なります」は変化を表す言葉。断定には「でございます」を使う。',cat:'keigo'},
+  {q:'「了解しました」の正しいビジネス表現は？',opts:['「わかりました」','「承知しました」または「かしこまりました」','「オッケーです」','「大丈夫です」'],a:1,exp:'「了解」は敬意のない表現。上司・患者様には「承知しました」「かしこまりました」。',cat:'keigo'},
+  {q:'「なるほどですね」の正しい言い換えは？',opts:['「なるほど〜」','「そうですか」','「おっしゃる通りです」または「左様でございますか」','「確かに」'],a:2,exp:'「なるほど」は目下への相槌。「おっしゃる通りです」「左様でございますか」に変える。',cat:'keigo'},
+  {q:'「Aさんはお休みを頂いております」の問題点は？',opts:['「A」を呼び捨てが失礼','「お休みを頂いて」という表現が誤り','「おります」が誤り','問題ない'],a:1,exp:'社内の人を外部に紹介するとき敬語は不要。「休みを取っております」が正解。',cat:'keigo'},
+  {q:'「参考になりました」の正しいビジネス表現は？',opts:['「勉強になりました」','「なるほどです」','「わかりました」','「理解しました」'],a:0,exp:'「参考」は"考えを決定するための足し"という意味。目上の方には「大変勉強になりました」が適切。',cat:'keigo'},
+];
+
+// ── シナリオデータ ──────────────────────────────────────────
+const scenes=[
+  {
+    title:'外来患者からの問い合わせ',
+    steps:[
+      {f:'c',t:'もしもし、山田と申しますが、今日の消化器外来の受付は何時までですか？'},
+      {f:'y',ch:[
+        {t:'「はい？何でしょうか。」',ok:false,fb:'名乗りが必要です。'},
+        {t:'福岡新水巻病院、医事課（受付）、○○でございます。山田様、消化器外来のご受付時間についてのご確認でございますね。',ok:true,fb:'✅ 院内ルール通りの名乗り＋内容確認、完璧です！'},
+        {t:'「M病院です。どうぞ。」',ok:false,fb:'正しい名乗りの形式で話してください。'},
+      ]},
+      {f:'c',t:'田中先生に取り次いでいただけますか？'},
+      {f:'y',ch:[
+        {t:'「田中先生はいません。」',ok:false,fb:'直接的すぎます。'},
+        {t:'「田中先生はただいま診察中でございます。ご伝言をお預かりするか、後ほど折り返しご連絡させていただくことも可能ですが、いかがいたしましょうか。」',ok:true,fb:'✅ 状況説明＋複数の選択肢提示、理想的！'},
+        {t:'「ちょっと待ってください。」',ok:false,fb:'「少々お待ちくださいませ」と丁寧に。'},
+      ]},
+      {f:'c',t:'折り返しをお願いします。090-XXXX-XXXXです。'},
+      {f:'y',ch:[
+        {t:'「わかりました。」',ok:false,fb:'復唱確認と「確かに承りました」が必要。'},
+        {t:'「確かに承りました。090-XXXX-XXXXでよろしいでしょうか。（確認後）田中にお伝えいたします。お電話ありがとうございました。」',ok:true,fb:'✅ 復唱確認→報告→感謝の締め、完璧！'},
+        {t:'「はい、伝えておきます。」',ok:false,fb:'復唱確認と感謝の言葉を加えましょう。'},
+      ]},
+    ]
+  },
+  {
+    title:'入院患者の在院確認・病状問い合わせ',
+    steps:[
+      {f:'c',t:'もしもし、鈴木と申しますが、田中花子という者が入院していませんか？'},
+      {f:'y',ch:[
+        {t:'「少々お待ちください。確認してみます。」',ok:false,fb:'❌ 確認すること自体が個人情報の開示に該当します。'},
+        {t:'「大変恐れ入りますが、患者様のご入院等に関するご案内は、個人情報保護の観点から電話ではできかねます。ご来院いただくか、患者様本人へご連絡いただきますようお願いいたします。」',ok:true,fb:'✅ 当院ルール通りの対応です！在院の有無自体を答えないことが重要。'},
+        {t:'「はい、入院されています。病室は○○号室です。」',ok:false,fb:'❌ 絶対NGです。在院確認・病室案内はどちらも不可。'},
+      ]},
+      {f:'c',t:'私は娘です。家族なので教えてもらえませんか？'},
+      {f:'y',ch:[
+        {t:'「ご家族の方でしたら教えます。」',ok:false,fb:'❌ ご家族であっても電話での本人確認は不可能です。'},
+        {t:'「大変恐れ入りますが、お電話ではご本人様の確認ができかねるため、ご家族様であっても患者様に関する情報はお伝えできません。誠に恐れ入りますが、ご来院いただけますでしょうか。」',ok:true,fb:'✅ 正しい対応です！家族を名乗る方でも同じ対応。なりすましのリスクもあります。'},
+        {t:'病棟に転送して確認してもらう',ok:false,fb:'❌ 病棟に転送しても同じルール。在院確認は電話では行わない。'},
+      ]},
+      {f:'c',t:'では病状だけでも教えてもらえませんか？'},
+      {f:'y',ch:[
+        {t:'「担当医に確認してから教えます。」',ok:false,fb:'❌ 担当医の確認後でも電話では教えられません。'},
+        {t:'「誠に申し訳ございませんが、病状に関することも電話ではお答えできません。ご来院いただき、担当医師にご確認いただきますようお願いいたします。」',ok:true,fb:'✅ 完璧な対応です！病状・病名もすべて電話では不可。'},
+        {t:'「看護師に確認して折り返します。」',ok:false,fb:'❌ 折り返しで伝えることも電話での情報提供にあたります。'},
+      ]},
+    ]
+  },
+  {
+    title:'待ち時間クレーム対応',
+    steps:[
+      {f:'c',t:'もしもし！1時間以上待ってるんですが、どうなってるんですか！'},
+      {f:'y',ch:[
+        {t:'「混んでるので仕方ありません。」',ok:false,fb:'❌ 言い訳は逆効果。まず謝罪・共感が先。'},
+        {t:'「大変お待たせしております。ご不便をおかけして誠に申し訳ございません。」',ok:true,fb:'✅ まず謝罪・共感。クレーム対応の第一歩！'},
+        {t:'「私に言われても困ります。」',ok:false,fb:'❌ 絶対NGの返答です。'},
+      ]},
+      {f:'c',t:'いつ呼ばれるか教えてください！'},
+      {f:'y',ch:[
+        {t:'「わかりません。」',ok:false,fb:'確認行動を示すことが重要。'},
+        {t:'「担当の者に確認してまいります。少々お待ちいただけますでしょうか。」',ok:true,fb:'✅ 即確認行動を示す。信頼回復の第一歩！'},
+        {t:'「もう少し待っていてください。」',ok:false,fb:'曖昧な返答はNG。具体的な確認行動を示しましょう。'},
+      ]},
+      {f:'c',t:'わかりました。よろしくお願いします。'},
+      {f:'y',ch:[
+        {t:'「はい。」のみ',ok:false,fb:'誠意が伝わりません。'},
+        {t:'「大変長らくお待たせしております。できる限り早くご案内できるよう努めてまいります。引き続きどうぞよろしくお願いいたします。」',ok:true,fb:'✅ 誠意ある締め。理想的なクレーム対応の終わり方です！'},
+        {t:'「ありがとうございます。」のみ',ok:false,fb:'状況への言及がなく誠意が伝わりにくいです。'},
+      ]},
+    ]
+  },
+  {
+    title:'他院からの診療情報照会',
+    steps:[
+      {f:'c',t:'もしもし、〇〇クリニックの田中と申します。患者の山田花子さんについて確認したいのですが。'},
+      {f:'y',ch:[
+        {t:'「はい、どうぞ。」とすぐに答える',ok:false,fb:'❌ 個人情報照会は相手確認が必須です。'},
+        {t:'「お電話ありがとうございます。恐れ入りますが、ご所属とご担当の先生のお名前をお聞かせいただけますでしょうか。」',ok:true,fb:'✅ 個人情報照会前の相手確認、正しい手順です！'},
+        {t:'「教えられません。」と切る',ok:false,fb:'拒否だけでなく、正しい手順を案内することが大切です。'},
+      ]},
+      {f:'c',t:'〇〇クリニック院長の田中一郎です。当院からの紹介患者なのですが。'},
+      {f:'y',ch:[
+        {t:'すぐ担当医師に転送する',ok:false,fb:'担当医師への事前確認が必要です。'},
+        {t:'「ありがとうございます。担当医師に確認の上、折り返しご連絡いたします。折り返し先のお電話番号をお聞かせいただけますでしょうか。」',ok:true,fb:'✅ 確認→折り返し対応、正しい手順です！'},
+        {t:'「今忙しいので後にしてください。」',ok:false,fb:'他院の医師に失礼です。丁寧に対応しましょう。'},
+      ]},
+    ]
+  }
+];
+
+// ── 状態 ─────────────────────────────────────────────────────
+let qi=0,score=0,ts=0,tp=0,pool=[],cf='all';
+let sIdx=0,sStep=0;
+const CATS={all:'すべて',basic:'基本',phrase:'フレーズ',privacy:'個人情報',manner:'マナー',claim:'クレーム',keigo:'敬語'};
+
+// ── 画面遷移 ─────────────────────────────────────────────────
+function go(id){
+  document.querySelectorAll('.scr,.cscr').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo(0,0);
+  if(id==='home'){
+    document.getElementById('hs').textContent=ts;
+    document.getElementById('hp').textContent=tp;
+  }
+  if(id==='manual') renderManual();
+}
+
+// ── タブ ─────────────────────────────────────────────────────
+function stab(i){
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  document.querySelectorAll('.tab-c').forEach((t,j)=>t.classList.toggle('on',j===i));
+}
+
+// ── マニュアル描画 ────────────────────────────────────────────
+function renderManual(){
+  document.getElementById('phrases-list').innerHTML=
+    phrases.map(p=>`<div class="pr"><div class="ps">${p.s}</div><div class="pt">${p.t}</div></div>`).join('');
+  document.getElementById('keigo-list').innerHTML=
+    keigoNG.map(k=>`<div class="pc"><div class="pn">✗ ${k.n}</div><div class="pa">↓</div><div class="po">✓ ${k.o}</div><div class="pnote">📌 ${k.note}</div></div>`).join('');
+}
+
+// ── クイズ ────────────────────────────────────────────────────
+function buildCF(){
+  document.getElementById('cff').innerHTML=
+    Object.entries(CATS).map(([k,v])=>`<div class="cf${cf===k?' on':''}" onclick="setFilter('${k}')">${v}</div>`).join('');
+}
+function setFilter(c){cf=c;buildCF();startQuiz();}
+
+function startQuiz(){
+  go('quiz');
+  pool=cf==='all'?[...ALL_Q]:[...ALL_Q.filter(q=>q.cat===cf)];
+  pool.sort(()=>Math.random()-.5);
+  pool=pool.slice(0,10);
+  qi=0;score=0;
+  buildCF();renderQ();
+}
+
+function renderQ(){
+  const d=pool[qi],tot=pool.length;
+  document.getElementById('qnum').textContent=(qi+1)+'/'+tot;
+  document.getElementById('qpf').style.width=Math.round(qi/tot*100)+'%';
+  const cl={basic:'基本',phrase:'フレーズ',privacy:'個人情報',manner:'マナー',claim:'クレーム',keigo:'敬語'}[d.cat]||d.cat;
+  document.getElementById('qbody').innerHTML=`
+    <div class="qq">
+      <div class="qlbl">問題 ${qi+1} / ${tot}</div>
+      <div class="qtxt">${d.q}</div>
+      <div class="qcat cat-${d.cat}">${cl}</div>
+    </div>
+    <div id="opts">${d.opts.map((o,i)=>`<div class="opt" onclick="ans(${i})">${['Ａ','Ｂ','Ｃ','Ｄ'][i]}．${o}</div>`).join('')}</div>
+    <div class="fb" id="fb"></div>
+    <button class="nbtn" id="nb" onclick="nextQ()">${qi<pool.length-1?'次の問題へ →':'結果を見る 🏆'}</button>`;
+}
+
+function ans(i){
+  const d=pool[qi];
+  document.querySelectorAll('.opt').forEach((o,j)=>{
+    if(j===d.a)o.classList.add('cor');
+    else if(j===i&&i!==d.a)o.classList.add('wrg');
+    else o.classList.add('dim2');
+    o.style.pointerEvents='none';
+  });
+  const fb=document.getElementById('fb'),ok=i===d.a;
+  fb.className='fb on '+(ok?'ok2':'ng2');
+  fb.textContent=(ok?'⭕ 正解！ ':'❌ 不正解… ')+d.exp;
+  if(ok)score++;
+  document.getElementById('nb').classList.add('on');
+}
+
+function nextQ(){
+  qi++;
+  if(qi>=pool.length){
+    ts+=score;tp++;
+    const pct=Math.round(score/pool.length*100);
+    const emoji=score===pool.length?'🏆':score>=pool.length*.7?'👍':'📚';
+    const msg=score===pool.length?'完璧です！素晴らしい！':score>=pool.length*.7?'あと少しで満点！復習してみよう。':'マニュアルで復習してからもう一度チャレンジ！';
+    document.getElementById('qbody').innerHTML=`
+      <div class="result-wrap">
+        <div class="result-emoji">${emoji}</div>
+        <div class="result-score">${score} / ${pool.length} 問正解</div>
+        <div class="result-pct">正答率 ${pct}%</div>
+        <div class="result-msg">${msg}</div>
+        <div class="result-btns">
+          <button class="btn-primary" onclick="startQuiz()">もう一度</button>
+          <button class="btn-secondary" onclick="go('home')">ホームへ</button>
+        </div>
+      </div>`;
+  } else { renderQ(); }
+}
+
+// ── シナリオ ─────────────────────────────────────────────────
+function startScene(i){
+  sIdx=i;sStep=0;
+  document.getElementById('ctitle').textContent=scenes[i].title;
+  document.getElementById('cback').onclick=()=>go('scenario');
+  document.getElementById('cbody').innerHTML='';
+  document.getElementById('cchoices').innerHTML='';
+  go('chat');
+  nextStep();
+}
+
+function nextStep(){
+  const sc=scenes[sIdx];
+  if(sStep>=sc.steps.length){
+    document.getElementById('cchoices').innerHTML=`
+      <div class="endbanner">
+        <h3>🎉 シナリオ完了！</h3>
+        <p>正しい電話応対ができました</p>
+        <button onclick="go('scenario')">シナリオ一覧へ</button>
+      </div>`;
+    return;
+  }
+  const s=sc.steps[sStep];
+  if(s.f==='c'){
+    addMsg('c',s.t);sStep++;setTimeout(nextStep,700);
+  } else {
+    showCh(s.ch);
+  }
+}
+
+function addMsg(from,text){
+  const b=document.getElementById('cbody');
+  const w=document.createElement('div');
+  const isC=from==='c';
+  w.innerHTML=`<div class="clbl" style="text-align:${isC?'left':'right'};margin-${isC?'left':'right'}:4px">${isC?'相手':'あなた'}</div><div class="cmsg ${isC?'caller':'mine'}">${text}</div>`;
+  b.appendChild(w);b.scrollTop=b.scrollHeight;
+}
+
+function addFb(text,ok){
+  const b=document.getElementById('cbody');
+  const d=document.createElement('div');
+  d.className='fbmsg';
+  d.style.background=ok?'var(--ltgreen)':'var(--ltred)';
+  d.style.color=ok?'var(--green)':'var(--red)';
+  d.style.borderColor=ok?'var(--bdgreen)':'var(--bdred)';
+  d.textContent=text;
+  b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+
+function showCh(ch){
+  const cc=document.getElementById('cchoices');
+  cc.innerHTML='<div class="ch-hint">返答を選んでください</div>'+
+    ch.map((c,i)=>`<div class="cchoice" onclick="pick(${i})">${c.t}</div>`).join('');
+  window._ch=ch;
+}
+
+function pick(i){
+  const c=window._ch[i];
+  document.getElementById('cchoices').innerHTML='';
+  addMsg('y',c.t);addFb(c.fb,c.ok);
+  if(c.ok){sStep++;setTimeout(nextStep,900);}
+  else{setTimeout(()=>showCh(window._ch),1400);}
+}
+
+// ── 初期化 ─────────────────────────────────────────────────
+buildCF();
+</script>
+
+
+</body></html>
