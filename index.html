@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0097)file:///C:/Users/User/Downloads/%E3%81%A7%E3%82%93%E3%82%8F%E3%81%AE%E9%81%94%E4%BA%BA%20(1).html -->
-<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>でんわの達人 — 福岡新水巻病院 電話応対トレーニング</title>
 <style>
@@ -168,6 +168,81 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
 
 /* ── ユーティリティ ─────────────────────────────────────── */
 .dim{opacity:.4;pointer-events:none}
+
+/* ── 検索 ───────────────────────────────────────────────── */
+.search-wrap{padding:12px 14px;background:var(--surface2);border-bottom:1px solid var(--border)}
+.search-input-wrap{position:relative}
+.search-input{width:100%;padding:9px 36px 9px 12px;border:1px solid var(--border);border-radius:10px;font-size:13px;background:var(--surface);color:var(--text);outline:none;transition:border-color .15s}
+.search-input:focus{border-color:var(--navy2)}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:16px;color:var(--text3);cursor:pointer;padding:2px;display:none}
+.search-clear.on{display:block}
+.search-count{font-size:10px;color:var(--text3);margin-top:6px}
+.search-body{padding:12px 14px;flex:1;overflow-y:auto}
+.search-empty{text-align:center;padding:40px 20px;color:var(--text3);font-size:13px}
+.search-empty .se-ico{font-size:40px;margin-bottom:10px}
+.sr-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px;margin-bottom:8px}
+.sr-cat{font-size:9px;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:5px;font-weight:600}
+.sr-cat-m{background:var(--ltblue);color:var(--blue)}
+.sr-cat-p{background:var(--ltamber);color:var(--amber)}
+.sr-cat-k{background:var(--ltpurple);color:var(--purple)}
+.sr-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;line-height:1.5}
+.sr-body{font-size:11px;color:var(--text2);line-height:1.5}
+.hl{background:#fff3b0;border-radius:2px;font-weight:600}
+
+/* ── 振り返りノート ─────────────────────────────────────── */
+.note-top-bar{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.note-count{font-size:11px;color:var(--text3)}
+.note-add-btn{background:var(--navy);color:var(--white);border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s}
+.note-add-btn:hover{background:var(--navy2)}
+.note-list{padding:12px 14px;flex:1;overflow-y:auto}
+.note-empty{text-align:center;padding:40px 20px;color:var(--text3)}
+.note-empty .ne-ico{font-size:44px;margin-bottom:10px}
+.note-empty p{font-size:13px;line-height:1.6}
+.ncard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:9px;position:relative}
+.ncard-date{font-size:9px;color:var(--text3);margin-bottom:5px}
+.ncard-situation{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.5}
+.ncard-label{font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.nl-what{background:var(--ltred);color:var(--red)}
+.nl-better{background:var(--ltgreen);color:var(--green)}
+.ncard-text{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:8px}
+.ncard-actions{display:flex;gap:6px;justify-content:flex-end}
+.ncard-del{background:none;border:1px solid var(--bdred);color:var(--red);border-radius:7px;padding:4px 10px;font-size:10px;cursor:pointer}
+.ncard-edit{background:none;border:1px solid var(--border);color:var(--text2);border-radius:7px;padding:4px 10px;font-size:10px;cursor:pointer}
+
+/* ── モーダル（振り返り入力） ────────────────────────────── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:flex-end;justify-content:center}
+.modal-overlay.on{display:flex}
+.modal{background:var(--surface);border-radius:18px 18px 0 0;padding:20px 16px 32px;width:100%;max-width:390px;max-height:85vh;overflow-y:auto}
+.modal-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;text-align:center}
+.modal-label{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px}
+.modal-input,.modal-textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:9px;font-size:13px;color:var(--text);background:var(--surface);outline:none;font-family:inherit;transition:border-color .15s;margin-bottom:12px}
+.modal-input:focus,.modal-textarea:focus{border-color:var(--navy2)}
+.modal-textarea{resize:vertical;min-height:70px}
+.modal-btns{display:flex;gap:8px;margin-top:4px}
+.modal-save{flex:1;background:var(--navy);color:var(--white);border:none;border-radius:9px;padding:12px;font-size:13px;font-weight:600;cursor:pointer}
+.modal-cancel{flex:1;background:var(--surface2);color:var(--text2);border:1px solid var(--border);border-radius:9px;padding:12px;font-size:13px;cursor:pointer}
+
+/* ── 共有選択 ────────────────────────────────────────────── */
+.share-select{display:flex;gap:8px;margin-bottom:14px}
+.share-opt{flex:1;border:1.5px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .15s;background:var(--surface)}
+.share-opt.on.private{border-color:var(--navy);background:var(--ltblue)}
+.share-opt.on.shared{border-color:var(--green);background:var(--ltgreen)}
+.share-opt .so-ico{font-size:20px;margin-bottom:4px}
+.share-opt .so-lbl{font-size:11px;font-weight:600;color:var(--text2)}
+.share-opt .so-desc{font-size:9px;color:var(--text3);margin-top:2px;line-height:1.4}
+.share-opt.on.private .so-lbl{color:var(--navy)}
+.share-opt.on.shared .so-lbl{color:var(--green)}
+/* ノートタブ */
+.note-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface2)}
+.note-tab{flex:1;padding:9px;text-align:center;font-size:11px;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent}
+.note-tab.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+/* 共有バッジ */
+.shared-badge{display:inline-block;background:var(--ltgreen);color:var(--green);font-size:9px;padding:1px 7px;border-radius:20px;margin-left:5px;font-weight:600;border:1px solid var(--bdgreen)}
+.private-badge{display:inline-block;background:var(--ltblue);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:20px;margin-left:5px;font-weight:600}
+/* 共有ノートの投稿者表示 */
+.ncard-shared-mark{font-size:9px;color:var(--green);font-weight:600;margin-bottom:4px}
+/* ローディング */
+.loading-msg{text-align:center;padding:30px;color:var(--text3);font-size:12px}
 </style>
 </head>
 <body>
@@ -178,7 +253,7 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
   <div class="home-top">
     <div class="logo">📞</div>
     <div class="app-name">でんわの達人</div>
-    <div class="app-sub">病院電話応対トレーニング v4</div>
+    <div class="app-sub">病院電話応対トレーニング v6</div>
     <div class="app-badge">福岡新水巻病院 院内資料準拠版</div>
   </div>
   <div class="body">
@@ -187,7 +262,7 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
       <div class="stat"><div class="stat-n" id="hp">0</div><div class="stat-l">挑戦回数</div></div>
     </div>
     <div class="sec-lbl">学習メニュー</div>
-    <div class="mcard" onclick="go(&#39;manual&#39;)">
+    <div class="mcard" onclick="go('manual')">
       <div class="mico" style="background:#e6f1fb">📖</div>
       <div class="mtxt"><h3>マニュアル・フレーズ集</h3><p>入院患者問合せ・個人情報対応含む全4タブ</p></div>
     </div>
@@ -195,9 +270,17 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
       <div class="mico" style="background:#eaf3de">✅</div>
       <div class="mtxt"><h3>クイズモード <span class="bdg">全30問</span></h3><p>カテゴリ別ランダム出題・個人情報対応含む</p></div>
     </div>
-    <div class="mcard" onclick="go(&#39;scenario&#39;)">
+    <div class="mcard" onclick="go('scenario')">
       <div class="mico" style="background:#faeeda">🎭</div>
       <div class="mtxt"><h3>シナリオ練習</h3><p>4本・入院患者問合せシナリオ収録</p></div>
+    </div>
+    <div class="mcard" onclick="go('search')">
+      <div class="mico" style="background:#f0eeff">🔍</div>
+      <div class="mtxt"><h3>キーワード検索</h3><p>マニュアル・フレーズ・敬語を横断検索</p></div>
+    </div>
+    <div class="mcard" onclick="go('notes')">
+      <div class="mico" style="background:#fce4d6">📝</div>
+      <div class="mtxt"><h3>振り返りノート <span class="bdg" id="note-badge" style="display:none"></span></h3><p>実例を記録して次に活かす</p></div>
     </div>
     <div class="sec-lbl" style="margin-top:16px">今後追加予定</div>
     <div class="mcard dim">
@@ -213,7 +296,7 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
 
 <!-- ======= MANUAL ======= -->
 <div class="scr" id="manual">
-  <div class="hdr"><div class="back" onclick="go(&#39;home&#39;)">‹</div><div class="hdr-title">マニュアル・フレーズ集</div></div>
+  <div class="hdr"><div class="back" onclick="go('home')">‹</div><div class="hdr-title">マニュアル・フレーズ集</div></div>
   <div class="tabs">
     <div class="tab on" onclick="stab(0)">基本ルール</div>
     <div class="tab" onclick="stab(1)">場面別対応</div>
@@ -387,18 +470,18 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
 <div class="scr" id="quiz">
   <div class="qhdr">
     <div class="qnav">
-      <div class="back" onclick="go(&#39;home&#39;)" style="font-size:24px;color:#fff;cursor:pointer;padding:0 4px">‹</div>
+      <div class="back" onclick="go('home')" style="font-size:24px;color:#fff;cursor:pointer;padding:0 4px">‹</div>
       <div class="qprog"><div class="qpf" id="qpf"></div></div>
       <div class="qnum" id="qnum">1/10</div>
     </div>
-    <div class="cf-row" id="cff"><div class="cf on" onclick="setFilter(&#39;all&#39;)">すべて</div><div class="cf" onclick="setFilter(&#39;basic&#39;)">基本</div><div class="cf" onclick="setFilter(&#39;phrase&#39;)">フレーズ</div><div class="cf" onclick="setFilter(&#39;privacy&#39;)">個人情報</div><div class="cf" onclick="setFilter(&#39;manner&#39;)">マナー</div><div class="cf" onclick="setFilter(&#39;claim&#39;)">クレーム</div><div class="cf" onclick="setFilter(&#39;keigo&#39;)">敬語</div></div>
+    <div class="cf-row" id="cff"></div>
   </div>
   <div class="qbody" id="qbody"></div>
 </div>
 
 <!-- ======= SCENARIO LIST ======= -->
 <div class="scr" id="scenario">
-  <div class="hdr"><div class="back" onclick="go(&#39;home&#39;)">‹</div><div class="hdr-title">シナリオ練習</div></div>
+  <div class="hdr"><div class="back" onclick="go('home')">‹</div><div class="hdr-title">シナリオ練習</div></div>
   <div class="body">
     <p style="font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.6">実際の電話応対をシミュレーション。正しい返答を選んでください。</p>
     <div class="scard" onclick="startScene(0)">
@@ -416,6 +499,99 @@ body{background:var(--bg);min-height:100vh;display:flex;align-items:flex-start;j
     <div class="scard" onclick="startScene(3)">
       <div class="shead"><div class="stitle">他院からの診療情報照会</div><div class="sdiff dm">中級</div></div>
       <div class="ssub">個人情報照会の手順・相手確認・担当医転送</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SEARCH ======= -->
+<div class="scr" id="search">
+  <div class="hdr"><div class="back" onclick="go('home')">‹</div><div class="hdr-title">キーワード検索</div></div>
+  <div class="search-wrap">
+    <div class="search-input-wrap">
+      <input class="search-input" id="search-input" type="text" placeholder="例：保留、クレーム、了解、入院..." oninput="doSearch()" autocomplete="off">
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+    </div>
+    <div class="search-count" id="search-count">キーワードを入力してください</div>
+  </div>
+  <div class="search-body" id="search-body">
+    <div class="search-empty">
+      <div class="se-ico">🔍</div>
+      <p>マニュアル・フレーズ集・敬語NG集を<br>まとめて検索できます</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= NOTES ======= -->
+<div class="scr" id="notes">
+  <div class="hdr"><div class="back" onclick="go('home')">‹</div><div class="hdr-title">振り返りノート</div></div>
+  <div class="note-tabs">
+    <div class="note-tab on" id="ntab0" onclick="switchNoteTab(0)">🔒 自分のノート</div>
+    <div class="note-tab" id="ntab1" onclick="switchNoteTab(1)">🌐 みんなの事例集</div>
+  </div>
+  <!-- 自分のノート -->
+  <div id="my-notes-pane" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+    <div class="note-top-bar">
+      <div class="note-count" id="note-count">記録：0件</div>
+      <button class="note-add-btn" onclick="openModal()">＋ 新しく記録する</button>
+    </div>
+    <div class="note-list" id="note-list">
+      <div class="note-empty">
+        <div class="ne-ico">📝</div>
+        <p>実際の電話応対で<br>困ったことや反省点を記録しよう。<br><br>「＋ 新しく記録する」から<br>追加できます。</p>
+      </div>
+    </div>
+  </div>
+  <!-- みんなの事例集 -->
+  <div id="shared-notes-pane" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+    <div class="note-top-bar">
+      <div class="note-count" id="shared-count">読み込み中...</div>
+      <button class="note-add-btn" onclick="openModal(null,true)">＋ 匿名で投稿する</button>
+    </div>
+    <div class="note-list" id="shared-list">
+      <div class="loading-msg">⏳ 読み込み中...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MODAL ======= -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-title" id="modal-title">📝 振り返りを記録する</div>
+    <input type="hidden" id="edit-id" value="">
+
+    <!-- 共有選択（新規のみ表示） -->
+    <div id="share-select-wrap">
+      <div class="modal-label" style="margin-bottom:7px">📢 この記録をどうしますか？</div>
+      <div class="share-select">
+        <div class="share-opt private on" id="opt-private" onclick="selectShare('private')">
+          <div class="so-ico">🔒</div>
+          <div class="so-lbl">自分だけ保存</div>
+          <div class="so-desc">他の人には見えません</div>
+        </div>
+        <div class="share-opt shared" id="opt-shared" onclick="selectShare('shared')">
+          <div class="so-ico">🌐</div>
+          <div class="so-lbl">匿名で共有</div>
+          <div class="so-desc">みんなの事例集に<br>投稿されます</div>
+        </div>
+      </div>
+      <div id="shared-notice" style="display:none;font-size:10px;color:var(--green);background:var(--ltgreen);border-radius:8px;padding:7px 10px;margin-bottom:10px;line-height:1.5">
+        ✅ 名前・個人情報は一切投稿されません。内容のみが匿名で全員に共有されます。
+      </div>
+    </div>
+
+    <div class="modal-label">📅 日付（任意）</div>
+    <input class="modal-input" id="n-date" type="date">
+    <div class="modal-label">📞 どんな状況でしたか？</div>
+    <input class="modal-input" id="n-situation" type="text" placeholder="例：外来患者から診察時間を聞かれた">
+    <div class="modal-label">❌ 実際にどう応対しましたか？（反省点）</div>
+    <textarea class="modal-textarea" id="n-what" placeholder="例：「ちょっと待ってください」と言ってしまった"></textarea>
+    <div class="modal-label">✅ 本当はどう言えばよかったですか？</div>
+    <textarea class="modal-textarea" id="n-better" placeholder="例：「少々お待ちくださいませ」と言えばよかった"></textarea>
+    <div class="modal-label">💡 気づき・メモ（任意）</div>
+    <textarea class="modal-textarea" id="n-memo" placeholder="例：次回は必ずクッション言葉を入れる" style="min-height:50px"></textarea>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal()">キャンセル</button>
+      <button class="modal-save" id="modal-save-btn" onclick="saveNote()">保存する</button>
     </div>
   </div>
 </div>
@@ -757,9 +933,303 @@ function pick(i){
   else{setTimeout(()=>showCh(window._ch),1400);}
 }
 
+// ── 検索 ─────────────────────────────────────────────────────
+// 検索対象データの構築
+function buildSearchIndex(){
+  const idx=[];
+  // マニュアル：基本フレーズ
+  phrases.forEach(p=>{
+    idx.push({cat:'フレーズ集',catCls:'sr-cat-p',title:p.s,body:p.t});
+  });
+  // 敬語NG集
+  keigoNG.forEach(k=>{
+    idx.push({cat:'敬語NG集',catCls:'sr-cat-k',title:`✗ ${k.n} → ✓ ${k.o}`,body:k.note});
+  });
+  // マニュアル静的コンテンツ（キーワード集）
+  const manualItems=[
+    {title:'外線の第一声',body:'福岡新水巻病院、医事課（受付）、○○でございます。病院名→部署名→自分の名前の順。もしもしは不要。'},
+    {title:'内線の第一声',body:'はい、医事課（受付）、○○です。内線でも必ず部署名と名前を名乗る。'},
+    {title:'3コール以上の場合',body:'お待たせいたしました。福岡新水巻病院でございます。ベルは2回以内が基本。'},
+    {title:'取り次ぎのとき',body:'○○でございますね。かしこまりました。少々お待ちくださいませ。内容確認→了承→保留の順。'},
+    {title:'担当者不在のとき',body:'申し訳ございません。あいにく○○は外出いたしております。戻り時間・折り返し・伝言の3択を提示。'},
+    {title:'他の電話中のとき',body:'あいにく○○はほかの電話に出ております。折り返しこちらからお電話を差し上げましょうか。'},
+    {title:'長時間保留になるとき',body:'確認にお時間をいただきますので、本日○時ごろに折り返しご連絡させていただきます。保留のまま放置は厳禁。'},
+    {title:'入院患者の在院確認',body:'大変恐れ入りますが、患者様のご入院等に関するご案内は個人情報保護の観点から電話ではできかねます。入院の有無も答えない。家族でも同様。'},
+    {title:'病状・病名の問い合わせ',body:'誠に申し訳ございませんが、病状に関することは電話ではお答えできません。ご来院いただきますようお願いいたします。'},
+    {title:'職員の個人情報',body:'大変申し訳ございませんが、職員の個人的な情報はお答えできかねます。自宅住所・電話番号・出張先は本人承諾なく教えない。'},
+    {title:'クレーム対応4ステップ',body:'① 謝罪・共感 → ② 傾聴（最後まで話を聞く）→ ③ 事実確認 → ④ 解決策提示。言い訳・否定・訂正は逆効果。'},
+    {title:'検査結果の問い合わせ',body:'申し訳ございませんが、検査結果はお電話ではお伝えできません。ご来院いただけますでしょうか。'},
+    {title:'予約受付のフレーズ',body:'お名前とご希望の日時をお聞かせいただけますでしょうか。初診の方は15分前にお越しいただけますと助かります。'},
+    {title:'聞き返すとき',body:'恐れ入りますが、もう一度おっしゃっていただけないでしょうか。クッション言葉を必ず使う。'},
+    {title:'保留のマナー',body:'少々お待ちくださいませ。保留は30秒以内が目安。長くなる場合は折り返しを提案。お待たせした後は大変お待たせいたしましたと言う。'},
+    {title:'メモの5W1H',body:'Who（だれが）When（いつ）Where（どこで）What（なにを）Why（なぜ）How（どのように）で必ずメモを取る。'},
+    {title:'電話の締め方',body:'お電話ありがとうございました。どうぞお大事になさってください。相手が切るのを待つ。かけた方から先に切るのが原則。'},
+  ];
+  manualItems.forEach(m=>{
+    idx.push({cat:'マニュアル',catCls:'sr-cat-m',title:m.title,body:m.body});
+  });
+  return idx;
+}
+
+const searchIndex=buildSearchIndex();
+
+function highlight(text,kw){
+  if(!kw) return text;
+  const escaped=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  return text.replace(new RegExp(escaped,'gi'),m=>`<span class="hl">${m}</span>`);
+}
+
+function doSearch(){
+  const kw=document.getElementById('search-input').value.trim();
+  const clear=document.getElementById('search-clear');
+  const count=document.getElementById('search-count');
+  const body=document.getElementById('search-body');
+  clear.classList.toggle('on',kw.length>0);
+  if(!kw){
+    count.textContent='キーワードを入力してください';
+    body.innerHTML='<div class="search-empty"><div class="se-ico">🔍</div><p>マニュアル・フレーズ集・敬語NG集を<br>まとめて検索できます</p></div>';
+    return;
+  }
+  const results=searchIndex.filter(item=>
+    item.title.includes(kw)||item.body.includes(kw)
+  );
+  count.textContent=results.length>0?`${results.length}件ヒットしました`:'一致する項目が見つかりませんでした';
+  if(results.length===0){
+    body.innerHTML='<div class="search-empty"><div class="se-ico">😔</div><p>「'+kw+'」に一致する項目が<br>見つかりませんでした。<br><br>別のキーワードをお試しください。</p></div>';
+    return;
+  }
+  body.innerHTML=results.map(r=>`
+    <div class="sr-card">
+      <div class="sr-cat ${r.catCls}">${r.cat}</div>
+      <div class="sr-title">${highlight(r.title,kw)}</div>
+      <div class="sr-body">${highlight(r.body,kw)}</div>
+    </div>`).join('');
+}
+
+function clearSearch(){
+  document.getElementById('search-input').value='';
+  doSearch();
+  document.getElementById('search-input').focus();
+}
+
+// ── 振り返りノート ────────────────────────────────────────────
+let notes=[];
+let editingId=null;
+let shareMode='private'; // 'private' or 'shared'
+let noteTabMode=0; // 0=自分, 1=みんな
+let isSharedModal=false;
+
+// ── Claude API ストレージ（共有ノート） ──────────────────────
+async function fetchSharedNotes(){
+  try{
+    const res=await window.storage.get('shared_notes');
+    return res?JSON.parse(res.value):[];
+  }catch(e){return[];}
+}
+async function pushSharedNote(note){
+  try{
+    const existing=await fetchSharedNotes();
+    existing.push(note);
+    // 最新100件のみ保持
+    const trimmed=existing.slice(-100);
+    await window.storage.set('shared_notes',JSON.stringify(trimmed),true);
+    return true;
+  }catch(e){return false;}
+}
+
+function escHtml(str){
+  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+// ── 個人ノート ───────────────────────────────────────────────
+function loadNotes(){
+  try{
+    const saved=localStorage.getItem('denwano_notes');
+    notes=saved?JSON.parse(saved):[];
+  }catch(e){notes=[];}
+  renderNotes();
+  updateNoteBadge();
+}
+
+function saveNotes(){
+  try{localStorage.setItem('denwano_notes',JSON.stringify(notes));}catch(e){}
+}
+
+function updateNoteBadge(){
+  const badge=document.getElementById('note-badge');
+  if(notes.length>0){
+    badge.textContent=notes.length+'件';
+    badge.style.display='inline-block';
+  }else{
+    badge.style.display='none';
+  }
+  const nc=document.getElementById('note-count');
+  if(nc) nc.textContent='記録：'+notes.length+'件';
+}
+
+function renderNotes(){
+  const list=document.getElementById('note-list');
+  if(!list) return;
+  updateNoteBadge();
+  if(notes.length===0){
+    list.innerHTML='<div class="note-empty"><div class="ne-ico">📝</div><p>実際の電話応対で<br>困ったことや反省点を記録しよう。<br><br>「＋ 新しく記録する」から<br>追加できます。</p></div>';
+    return;
+  }
+  list.innerHTML=notes.slice().reverse().map(n=>`
+    <div class="ncard">
+      <div class="ncard-date">${n.date||'日付なし'}${n.shared?'<span class="shared-badge">🌐 共有済み</span>':'<span class="private-badge">🔒 自分のみ</span>'}</div>
+      <div class="ncard-situation">${escHtml(n.situation)}</div>
+      <div class="ncard-label nl-what">❌ 実際の応対（反省点）</div>
+      <div class="ncard-text">${escHtml(n.what)}</div>
+      <div class="ncard-label nl-better">✅ こうすればよかった</div>
+      <div class="ncard-text">${escHtml(n.better)}</div>
+      ${n.memo?`<div class="ncard-label" style="background:var(--ltblue);color:var(--blue)">💡 メモ</div><div class="ncard-text">${escHtml(n.memo)}</div>`:''}
+      <div class="ncard-actions">
+        <button class="ncard-edit" onclick="openModal('${n.id}')">✏️ 編集</button>
+        <button class="ncard-del" onclick="deleteNote('${n.id}')">🗑 削除</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── 共有ノート ───────────────────────────────────────────────
+async function renderSharedNotes(){
+  const list=document.getElementById('shared-list');
+  const count=document.getElementById('shared-count');
+  list.innerHTML='<div class="loading-msg">⏳ 読み込み中...</div>';
+  const shared=await fetchSharedNotes();
+  if(shared.length===0){
+    count.textContent='みんなの事例：0件';
+    list.innerHTML='<div class="note-empty"><div class="ne-ico">🌐</div><p>まだ共有された事例がありません。<br><br>あなたの経験を匿名で投稿して<br>みんなの学びに役立てましょう！</p></div>';
+    return;
+  }
+  count.textContent='みんなの事例：'+shared.length+'件';
+  list.innerHTML=shared.slice().reverse().map(n=>`
+    <div class="ncard">
+      <div class="ncard-shared-mark">🌐 匿名投稿 · ${n.date||'日付なし'}</div>
+      <div class="ncard-situation">${escHtml(n.situation)}</div>
+      <div class="ncard-label nl-what">❌ 実際の応対（反省点）</div>
+      <div class="ncard-text">${escHtml(n.what)}</div>
+      <div class="ncard-label nl-better">✅ こうすればよかった</div>
+      <div class="ncard-text">${escHtml(n.better)}</div>
+      ${n.memo?`<div class="ncard-label" style="background:var(--ltblue);color:var(--blue)">💡 メモ</div><div class="ncard-text">${escHtml(n.memo)}</div>`:''}
+    </div>`).join('');
+}
+
+// ── タブ切り替え ─────────────────────────────────────────────
+function switchNoteTab(i){
+  noteTabMode=i;
+  document.getElementById('ntab0').classList.toggle('on',i===0);
+  document.getElementById('ntab1').classList.toggle('on',i===1);
+  document.getElementById('my-notes-pane').style.display=i===0?'flex':'none';
+  document.getElementById('shared-notes-pane').style.display=i===1?'flex':'none';
+  if(i===1) renderSharedNotes();
+}
+
+// ── 共有モード選択 ───────────────────────────────────────────
+function selectShare(mode){
+  shareMode=mode;
+  document.getElementById('opt-private').classList.toggle('on',mode==='private');
+  document.getElementById('opt-shared').classList.toggle('on',mode==='shared');
+  document.getElementById('shared-notice').style.display=mode==='shared'?'block':'none';
+  const btn=document.getElementById('modal-save-btn');
+  btn.textContent=mode==='shared'?'匿名で投稿する':'保存する';
+  btn.style.background=mode==='shared'?'var(--green)':'var(--navy)';
+}
+
+// ── モーダル開閉 ─────────────────────────────────────────────
+function openModal(id,forceShared){
+  editingId=id||null;
+  isSharedModal=!!forceShared;
+  const modal=document.getElementById('modal-overlay');
+  const title=document.getElementById('modal-title');
+  const shareWrap=document.getElementById('share-select-wrap');
+
+  if(editingId){
+    const n=notes.find(x=>x.id===editingId);
+    if(!n) return;
+    title.textContent='✏️ 振り返りを編集する';
+    shareWrap.style.display='none';
+    document.getElementById('n-date').value=n.date||'';
+    document.getElementById('n-situation').value=n.situation||'';
+    document.getElementById('n-what').value=n.what||'';
+    document.getElementById('n-better').value=n.better||'';
+    document.getElementById('n-memo').value=n.memo||'';
+    document.getElementById('modal-save-btn').textContent='保存する';
+    document.getElementById('modal-save-btn').style.background='var(--navy)';
+  } else {
+    shareWrap.style.display='block';
+    const today=new Date().toISOString().slice(0,10);
+    document.getElementById('n-date').value=today;
+    document.getElementById('n-situation').value='';
+    document.getElementById('n-what').value='';
+    document.getElementById('n-better').value='';
+    document.getElementById('n-memo').value='';
+    if(forceShared){
+      title.textContent='🌐 匿名で事例を投稿する';
+      selectShare('shared');
+    } else {
+      title.textContent='📝 振り返りを記録する';
+      selectShare('private');
+    }
+  }
+  modal.classList.add('on');
+}
+
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('on');
+  editingId=null;
+}
+
+function closeModalOutside(e){
+  if(e.target===document.getElementById('modal-overlay')) closeModal();
+}
+
+async function saveNote(){
+  const situation=document.getElementById('n-situation').value.trim();
+  const what=document.getElementById('n-what').value.trim();
+  const better=document.getElementById('n-better').value.trim();
+  if(!situation||!what||!better){
+    alert('「状況」「実際の応対」「こうすればよかった」の3つは必須です。');
+    return;
+  }
+  const date=document.getElementById('n-date').value;
+  const memo=document.getElementById('n-memo').value.trim();
+  const btn=document.getElementById('modal-save-btn');
+  btn.disabled=true; btn.textContent='保存中...';
+
+  if(editingId){
+    const idx=notes.findIndex(x=>x.id===editingId);
+    if(idx>=0) notes[idx]={...notes[idx],date,situation,what,better,memo};
+    saveNotes(); renderNotes(); closeModal();
+  } else {
+    const isShared=shareMode==='shared';
+    // 個人ノートに常に保存
+    const newNote={id:Date.now().toString(),date,situation,what,better,memo,shared:isShared};
+    notes.push(newNote);
+    saveNotes();
+    // 共有の場合はストレージにも投稿
+    if(isShared){
+      const ok=await pushSharedNote({id:newNote.id,date,situation,what,better,memo});
+      if(!ok){
+        alert('共有の投稿に失敗しました。自分のノートには保存されました。');
+      }
+    }
+    renderNotes();
+    closeModal();
+    if(isShared && noteTabMode===1) renderSharedNotes();
+  }
+  btn.disabled=false;
+}
+
+function deleteNote(id){
+  if(!confirm('この記録を削除しますか？')) return;
+  notes=notes.filter(n=>n.id!==id);
+  saveNotes(); renderNotes();
+}
+
 // ── 初期化 ─────────────────────────────────────────────────
 buildCF();
+loadNotes();
 </script>
-
-
-</body></html>
+</body>
+</html>
